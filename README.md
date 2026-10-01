@@ -4,8 +4,6 @@ Tokens de design compartilhados pelos projetos web do guavovic: cores, tipografi
 
 **Preview:** [guavovic-ui.vercel.app](https://guavovic-ui.vercel.app)
 
-> **Valores provisórios.** A identidade visual ainda não foi decidida. As cores e as fontes atuais são neutras de propósito, e vão mudar sem quebrar os nomes.
-
 ## Como usar
 
 Num projeto com HTML puro, inclua o arquivo com a versão fixa:
@@ -39,8 +37,6 @@ Cada cor semântica tem os dois valores dentro de `light-dark()`. Sem fazer nada
 <html data-theme="dark">
 ```
 
-`light-dark()` funciona nos navegadores atuais desde 2024 (Chrome 123, Firefox 120, Safari 17.5).
-
 ## Tokens
 
 | Grupo | Nomes | Exemplo |
@@ -53,13 +49,13 @@ Cada cor semântica tem os dois valores dentro de `light-dark()`. Sem fazer nada
 | Forma | `--gv-radius-{sm, md, lg, full}`, `--gv-shadow-{sm, md}` | `border-radius: var(--gv-radius-md)` |
 | Movimento | `--gv-duration-{fast, normal}`, `--gv-ease` | `transition: color var(--gv-duration-fast) var(--gv-ease)` |
 
-As primitivas (`--gv-gray-*`, `--gv-blue-*`...) existem só para compor as semânticas. Os projetos não devem usá-las direto, porque elas mudam quando a identidade mudar.
+As primitivas (`--gv-gray-*`, `--gv-blue-*`...) existem só para compor as semânticas. Os projetos não devem usá-las direto, porque podem mudar entre versões.
 
 A página de preview, [guavovic-ui.vercel.app](https://guavovic-ui.vercel.app), mostra todos os tokens aplicados, nos dois temas.
 
 ## Contraste
 
-Os pares de texto e fundo (texto sobre fundo, destaque sobre superfície, texto sobre o botão principal...) são conferidos no CI pelo `scripts/check-contrast.mjs`, nos dois temas, com o mínimo do WCAG AA: 4,5:1 para texto e 3:1 para o anel de foco. Para rodar localmente:
+Os pares de texto e fundo passam no contraste mínimo do WCAG AA nos dois temas, conferido no CI. Para conferir localmente:
 
 ```bash
 node scripts/check-contrast.mjs
@@ -67,6 +63,6 @@ node scripts/check-contrast.mjs
 
 ## Versões
 
-[SemVer](https://semver.org/lang/pt-BR/), com uma tag no Git para cada versão e as mudanças no [CHANGELOG](CHANGELOG.md). Enquanto a versão começar com `0.`, a identidade ainda está em definição e valores podem mudar. Renomear ou remover um token semântico só acontece numa versão nova de número principal.
+[SemVer](https://semver.org/lang/pt-BR/), com uma tag no Git para cada versão e as mudanças no [CHANGELOG](CHANGELOG.md). Enquanto a versão começar com `0.`, os valores podem mudar. Renomear ou remover um token semântico só acontece numa versão nova de número principal.
 
 As decisões de arquitetura ficam em [`docs/decisions`](docs/decisions).
