@@ -1,21 +1,18 @@
-# Security Policy
+# Política de segurança
 
-## Supported Versions
+## Versões com suporte
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Só a versão mais recente recebe correções. Enquanto o projeto estiver em `0.x`, não há correções para versões anteriores.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Versão | Suporte |
+|---|---|
+| Mais recente `0.x` | ✅ |
+| Anteriores | ❌ |
 
-## Reporting a Vulnerability
+## Como relatar uma vulnerabilidade
 
-Use this section to tell people how to report a vulnerability.
+Não abra uma issue pública. Use o relato privado do GitHub: na aba **Security** deste repositório, clique em **Report a vulnerability**.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+O guavovic-ui é só um arquivo CSS, sem código que rode no servidor nem dependências. O que se encaixa aqui é, por exemplo, uma forma de o `tokens.css` carregar conteúdo externo ou executar algo na página de quem o usa.
+
+Respondo em até 7 dias. Se a vulnerabilidade for confirmada, a correção sai numa versão nova e o relato é creditado, se você quiser.
