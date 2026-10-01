@@ -1,13 +1,8 @@
-// Confere o contraste (WCAG 2.2) dos pares de cores semânticas do tokens.css, no tema claro e no escuro.
-// Sem dependências: lê as declarações do :root, resolve var() e light-dark() até chegar num hex.
-// Uso: node scripts/check-contrast.mjs
-
 import { readFileSync } from "node:fs";
 
-const TEXT = 4.5; // texto comum (AA)
-const UI = 3; // indicadores e contornos que precisam ser percebidos, como o anel de foco (AA)
+const TEXT = 4.5;
+const UI = 3;
 
-// [frente, fundo, mínimo]
 const pairs = [
   ["text", "bg", TEXT],
   ["text", "surface", TEXT],

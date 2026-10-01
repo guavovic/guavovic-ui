@@ -1,21 +1,5 @@
-/*
- * guavovic-ui: tokens de design compartilhados pelos projetos web do guavovic.
- *
- * Duas camadas:
- *   - Primitivas (--gv-gray-*, --gv-blue-*...): a paleta crua. Os projetos não usam direto.
- *   - Semânticas (--gv-color-*, --gv-font-*...): o papel de cada valor. É o que os projetos usam.
- *
- * Tema: cada cor semântica tem os dois valores em light-dark(). O navegador escolhe pelo tema do sistema;
- * data-theme="light" ou data-theme="dark" em qualquer elemento força um dos dois.
- *
- * PROVISÓRIO: a identidade visual ainda não foi decidida. Cores e fontes abaixo são neutras de propósito.
- * Quando a identidade fechar, mudam as primitivas e as fontes; os nomes semânticos continuam os mesmos.
- */
-
 :root {
   color-scheme: light dark;
-
-  /* ---------- Primitivas: cores (provisórias) ---------- */
 
   --gv-gray-0: #ffffff;
   --gv-gray-50: #fafafa;
@@ -42,37 +26,28 @@
   --gv-amber-400: #fbbf24;
   --gv-amber-700: #b45309;
 
-  /* ---------- Semânticas: cores ---------- */
-
-  /* Superfícies */
   --gv-color-bg: light-dark(var(--gv-gray-50), var(--gv-gray-950));
   --gv-color-surface: light-dark(var(--gv-gray-0), var(--gv-gray-900));
   --gv-color-surface-hover: light-dark(var(--gv-gray-100), var(--gv-gray-800));
   --gv-color-border: light-dark(var(--gv-gray-200), var(--gv-gray-800));
   --gv-color-border-strong: light-dark(var(--gv-gray-300), var(--gv-gray-700));
 
-  /* Texto */
   --gv-color-text: light-dark(var(--gv-gray-900), var(--gv-gray-50));
   --gv-color-text-muted: light-dark(var(--gv-gray-600), var(--gv-gray-400));
 
-  /* Destaque: links, botão principal, foco */
   --gv-color-accent: light-dark(var(--gv-blue-700), var(--gv-blue-400));
   --gv-color-accent-hover: light-dark(var(--gv-blue-800), var(--gv-blue-300));
   --gv-color-on-accent: light-dark(var(--gv-gray-0), var(--gv-gray-950));
   --gv-color-focus: var(--gv-color-accent);
 
-  /* Estados */
   --gv-color-danger: light-dark(var(--gv-red-700), var(--gv-red-400));
   --gv-color-success: light-dark(var(--gv-green-700), var(--gv-green-400));
   --gv-color-warning: light-dark(var(--gv-amber-700), var(--gv-amber-400));
-
-  /* ---------- Tipografia (provisória: fontes do sistema) ---------- */
 
   --gv-font-display: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --gv-font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --gv-font-mono: ui-monospace, "Cascadia Code", Consolas, "Liberation Mono", monospace;
 
-  /* Escala de tamanhos (razão ~1,25, base 16px) */
   --gv-text-xs: 0.75rem;
   --gv-text-sm: 0.875rem;
   --gv-text-base: 1rem;
@@ -88,8 +63,6 @@
   --gv-weight-medium: 500;
   --gv-weight-bold: 700;
 
-  /* ---------- Espaçamento (múltiplos de 4px) ---------- */
-
   --gv-space-1: 0.25rem;
   --gv-space-2: 0.5rem;
   --gv-space-3: 0.75rem;
@@ -99,8 +72,6 @@
   --gv-space-12: 3rem;
   --gv-space-16: 4rem;
 
-  /* ---------- Forma ---------- */
-
   --gv-radius-sm: 4px;
   --gv-radius-md: 8px;
   --gv-radius-lg: 12px;
@@ -108,8 +79,6 @@
 
   --gv-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.08);
   --gv-shadow-md: 0 4px 12px rgb(0 0 0 / 0.12);
-
-  /* ---------- Movimento ---------- */
 
   --gv-duration-fast: 120ms;
   --gv-duration-normal: 200ms;
