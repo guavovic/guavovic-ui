@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>guavovic-ui</title>
+  <meta name="description" content="Tokens de design compartilhados pelos projetos web do guavovic: cores, tipografia, espaçamento e forma, nos temas claro e escuro.">
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--gv-color-bg);
+      color: var(--gv-color-text);
+      font-family: var(--gv-font-body);
+      font-size: var(--gv-text-base);
+      line-height: var(--gv-leading-normal);
+    }
+    .page { max-width: 64rem; margin: 0 auto; padding-inline: var(--gv-space-4); padding-block: var(--gv-space-8) var(--gv-space-16); display: grid; gap: var(--gv-space-12); }
+    h1, h2, h3 { font-family: var(--gv-font-display); line-height: var(--gv-leading-tight); margin: 0; text-wrap: balance; }
+    h1 { font-size: var(--gv-text-3xl); }
+    h2 { font-size: var(--gv-text-xl); }
+    h3 { font-size: var(--gv-text-lg); }
+    p { margin: 0; }
+    a { color: var(--gv-color-accent); text-underline-offset: 3px; }
+    a:hover { color: var(--gv-color-accent-hover); }
+    code { font-family: var(--gv-font-mono); font-size: 0.9em; }
+    :focus-visible { outline: 2px solid var(--gv-color-focus); outline-offset: 2px; }
+
+    header { display: grid; gap: var(--gv-space-4); }
+    .muted { color: var(--gv-color-text-muted); }
+    .notice { border: 1px solid var(--gv-color-warning); color: var(--gv-color-text); background: var(--gv-color-surface); border-radius: var(--gv-radius-md); padding: var(--gv-space-3) var(--gv-space-4); font-size: var(--gv-text-sm); }
+    .notice strong { color: var(--gv-color-warning); }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: var(--gv-space-2); align-items: center; }
+    .segmented { display: inline-flex; border: 1px solid var(--gv-color-border-strong); border-radius: var(--gv-radius-full); padding: 2px; background: var(--gv-color-surface); }
+    .segmented button { font: inherit; font-size: var(--gv-text-sm); border: 0; background: transparent; color: var(--gv-color-text-muted); padding: var(--gv-space-1) var(--gv-space-3); border-radius: var(--gv-radius-full); cursor: pointer; }
+    .segmented button[aria-pressed="true"] { background: var(--gv-color-accent); color: var(--gv-color-on-accent); }
+
+    section { display: grid; gap: var(--gv-space-4); }
+    .grid { display: grid; gap: var(--gv-space-3); grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+
+    .swatch { border: 1px solid var(--gv-color-border); border-radius: var(--gv-radius-md); overflow: hidden; background: var(--gv-color-surface); }
+    .swatch .chip { height: 3.5rem; border-bottom: 1px solid var(--gv-color-border); }
+    .swatch .info { padding: var(--gv-space-2) var(--gv-space-3); display: grid; gap: 2px; font-size: var(--gv-text-sm); min-width: 0; }
+    .swatch .info code { color: var(--gv-color-text-muted); overflow-wrap: anywhere; }
+
+    .type-scale { display: grid; gap: var(--gv-space-3); }
+    .type-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--gv-space-4); align-items: baseline; border-bottom: 1px solid var(--gv-color-border); padding-bottom: var(--gv-space-3); }
+    .type-row code { color: var(--gv-color-text-muted); font-size: var(--gv-text-xs); }
+    .type-row span { font-family: var(--gv-font-display); line-height: var(--gv-leading-tight); min-width: 0; overflow-wrap: anywhere; }
+    @media (max-width: 36rem) { .type-row { grid-template-columns: 1fr; gap: var(--gv-space-1); } }
+
+    .scale { display: grid; gap: var(--gv-space-2); }
+    .scale-row { display: grid; grid-template-columns: 9rem 1fr; gap: var(--gv-space-4); align-items: center; font-size: var(--gv-text-sm); }
+    .scale-row code { color: var(--gv-color-text-muted); }
+    .bar { height: 0.75rem; background: var(--gv-color-accent); border-radius: var(--gv-radius-sm); }
+
+    .shapes { display: flex; flex-wrap: wrap; gap: var(--gv-space-4); }
+    .shape { width: 7rem; height: 5rem; background: var(--gv-color-surface); border: 1px solid var(--gv-color-border); display: grid; place-items: center; font-size: var(--gv-text-xs); color: var(--gv-color-text-muted); font-family: var(--gv-font-mono); text-align: center; padding: var(--gv-space-1); }
+
+    .demo { display: grid; gap: var(--gv-space-4); background: var(--gv-color-surface); border: 1px solid var(--gv-color-border); border-radius: var(--gv-radius-lg); padding: var(--gv-space-6); box-shadow: var(--gv-shadow-sm); }
+    .row { display: flex; flex-wrap: wrap; gap: var(--gv-space-3); align-items: center; }
+    .btn { font: inherit; font-weight: var(--gv-weight-medium); font-size: var(--gv-text-sm); padding: var(--gv-space-2) var(--gv-space-4); border-radius: var(--gv-radius-md); border: 1px solid transparent; cursor: pointer; transition: background-color var(--gv-duration-fast) var(--gv-ease); }
+    .btn-primary { background: var(--gv-color-accent); color: var(--gv-color-on-accent); }
+    .btn-primary:hover { background: var(--gv-color-accent-hover); }
+    .btn-secondary { background: transparent; color: var(--gv-color-text); border-color: var(--gv-color-border-strong); }
+    .btn-secondary:hover { background: var(--gv-color-surface-hover); }
+    .field { display: grid; gap: var(--gv-space-1); max-width: 20rem; }
+    .field label { font-size: var(--gv-text-sm); font-weight: var(--gv-weight-medium); }
+    .field input { font: inherit; color: var(--gv-color-text); background: var(--gv-color-bg); border: 1px solid var(--gv-color-border-strong); border-radius: var(--gv-radius-md); padding: var(--gv-space-2) var(--gv-space-3); }
+    .field small { color: var(--gv-color-text-muted); font-size: var(--gv-text-xs); }
+    .status { display: grid; gap: var(--gv-space-2); font-size: var(--gv-text-sm); }
+    .status p { padding-left: var(--gv-space-3); border-left: 3px solid currentColor; }
+    .status .danger { color: var(--gv-color-danger); }
+    .status .success { color: var(--gv-color-success); }
+    .status .warning { color: var(--gv-color-warning); }
+
+    footer { font-size: var(--gv-text-sm); color: var(--gv-color-text-muted); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>guavovic-ui</h1>
+      <p class="muted">Tokens de design compartilhados pelos projetos web do guavovic. Os projetos usam só os nomes semânticos (<code>--gv-color-*</code>, <code>--gv-font-*</code>, <code>--gv-space-*</code>...), então trocar a identidade é trocar valores aqui.</p>
+      <p class="notice"><strong>Valores provisórios.</strong> A identidade visual ainda não foi decidida: as cores e as fontes abaixo são neutras de propósito.</p>
+      <div class="toolbar">
+        <span class="muted">Tema:</span>
+        <div class="segmented" role="group" aria-label="Tema da página">
+          <button type="button" data-set-theme="system" aria-pressed="true">Sistema</button>
+          <button type="button" data-set-theme="light" aria-pressed="false">Claro</button>
+          <button type="button" data-set-theme="dark" aria-pressed="false">Escuro</button>
+        </div>
+      </div>
+    </header>
+
+    <section aria-labelledby="cores">
+      <h2 id="cores">Cores semânticas</h2>
+      <p class="muted">O valor muda com o tema. Todos os pares de texto e fundo passam no contraste AA, conferido no CI.</p>
+      <div class="grid" id="swatches"></div>
+    </section>
+
+    <section aria-labelledby="componentes">
+      <h2 id="componentes">Em uso</h2>
+      <div class="demo">
+        <h3>Buscar endereço</h3>
+        <p class="muted">Um exemplo montado só com os tokens. <a href="https://github.com/guavovic/guavovic-ui">Ver o código</a>.</p>
+        <div class="field">
+          <label for="demo-cep">CEP</label>
+          <input id="demo-cep" value="01001-000" inputmode="numeric">
+          <small>8 dígitos, com ou sem traço.</small>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary" type="button">Buscar</button>
+          <button class="btn btn-secondary" type="button">Limpar</button>
+        </div>
+        <div class="status">
+          <p class="success">Endereço encontrado: Praça da Sé, São Paulo/SP.</p>
+          <p class="warning">O ViaCEP demorou; a resposta veio da BrasilAPI.</p>
+          <p class="danger">Nenhum endereço encontrado para o CEP informado.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="tipografia">
+      <h2 id="tipografia">Tipografia</h2>
+      <div class="type-scale" id="type-scale"></div>
+    </section>
+
+    <section aria-labelledby="espacamento">
+      <h2 id="espacamento">Espaçamento</h2>
+      <div class="scale" id="space-scale"></div>
+    </section>
+
+    <section aria-labelledby="forma">
+      <h2 id="forma">Raios e sombras</h2>
+      <div class="shapes" id="shapes"></div>
+    </section>
+
+    <footer>
+      <p>Para usar num projeto: <code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/guavovic/guavovic-ui@v0.1.0/tokens.css"&gt;</code></p>
+    </footer>
+  </div>
+
+  <script>
+    const colors = [
+      ["bg", "fundo da página"], ["surface", "cartões e campos"], ["surface-hover", "superfície com o mouse em cima"],
+      ["border", "bordas discretas"], ["border-strong", "bordas de controles"], ["text", "texto principal"],
+      ["text-muted", "texto secundário"], ["accent", "links, botão principal"], ["accent-hover", "destaque com o mouse em cima"],
+      ["on-accent", "texto sobre o destaque"], ["focus", "anel de foco"], ["danger", "erro"], ["success", "sucesso"], ["warning", "aviso"],
+    ];
+    const typeScale = ["3xl", "2xl", "xl", "lg", "base", "sm", "xs"];
+    const spaces = ["1", "2", "3", "4", "6", "8", "12", "16"];
+    const shapes = [["radius-sm", "shadow-sm"], ["radius-md", "shadow-sm"], ["radius-lg", "shadow-md"], ["radius-full", "shadow-md"]];
+
+    const toHex = (rgb) => {
+      const parts = rgb.match(/\d+(\.\d+)?/g);
+      if (!parts || parts.length < 3) return rgb;
+      return "#" + parts.slice(0, 3).map((n) => Math.round(Number(n)).toString(16).padStart(2, "0")).join("");
+    };
+
+    document.getElementById("swatches").innerHTML = colors.map(([name, use]) => `
+      <div class="swatch">
+        <div class="chip" style="background: var(--gv-color-${name})"></div>
+        <div class="info"><strong>${use}</strong><code>--gv-color-${name}</code><code data-value="${name}"></code></div>
+      </div>`).join("");
+
+    document.getElementById("type-scale").innerHTML = typeScale.map((size) => `
+      <div class="type-row"><code>--gv-text-${size}</code><span style="font-size: var(--gv-text-${size})">Achaí encontra o endereço</span></div>`).join("");
+
+    document.getElementById("space-scale").innerHTML = spaces.map((step) => `
+      <div class="scale-row"><code>--gv-space-${step}</code><div class="bar" style="width: var(--gv-space-${step})"></div></div>`).join("");
+
+    document.getElementById("shapes").innerHTML = shapes.map(([radius, shadow]) => `
+      <div class="shape" style="border-radius: var(--gv-${radius}); box-shadow: var(--gv-${shadow})">${radius}<br>${shadow}</div>`).join("");
+
+    function showValues() {
+      document.querySelectorAll("[data-value]").forEach((el) => {
+        const chip = el.closest(".swatch").querySelector(".chip");
+        el.textContent = toHex(getComputedStyle(chip).backgroundColor);
+      });
+    }
+
+    function setTheme(theme) {
+      if (theme === "system") document.documentElement.removeAttribute("data-theme");
+      else document.documentElement.setAttribute("data-theme", theme);
+      document.querySelectorAll("[data-set-theme]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.setTheme === theme)));
+      try { localStorage.setItem("gv-theme", theme); } catch {}
+      showValues();
+    }
+
+    document.querySelectorAll("[data-set-theme]").forEach((b) => b.addEventListener("click", () => setTheme(b.dataset.setTheme)));
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", showValues);
+
+    let saved = "system";
+    try { saved = localStorage.getItem("gv-theme") || "system"; } catch {}
+    setTheme(saved);
+  </script>
+</body>
+</html>
