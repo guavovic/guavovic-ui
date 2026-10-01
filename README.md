@@ -2,6 +2,8 @@
 
 Tokens de design compartilhados pelos projetos web do guavovic: cores, tipografia, espaçamento, forma e movimento, nos temas claro e escuro, num único arquivo CSS.
 
+**Preview:** [guavovic-ui.vercel.app](https://guavovic-ui.vercel.app)
+
 > **Valores provisórios.** A identidade visual ainda não foi decidida. As cores e as fontes atuais são neutras de propósito, e vão mudar sem quebrar os nomes.
 
 ## Como usar
@@ -53,7 +55,7 @@ Cada cor semântica tem os dois valores dentro de `light-dark()`. Sem fazer nada
 
 As primitivas (`--gv-gray-*`, `--gv-blue-*`...) existem só para compor as semânticas. Os projetos não devem usá-las direto, porque elas mudam quando a identidade mudar.
 
-A página de preview (`index.html`) mostra todos os tokens aplicados, nos dois temas.
+A página de preview, [guavovic-ui.vercel.app](https://guavovic-ui.vercel.app), mostra todos os tokens aplicados, nos dois temas.
 
 ## Contraste
 
